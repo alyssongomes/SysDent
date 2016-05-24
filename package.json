@@ -4,7 +4,8 @@
   "description": "Um aplicativo Desktop para ser usado em consultórios de dentistas.",
   "main": "index.js",
   "dependencies": {
-    "electron": "^0.4.1"
+    "electron": "^0.4.1",
+    "mysql": "^2.10.2"
   },
   "devDependencies": {},
   "scripts": {
