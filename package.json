@@ -1,0 +1,28 @@
+{
+  "name": "sysdent",
+  "version": "0.0.1",
+  "description": "Um aplicativo Desktop para ser usado em consultórios de dentistas.",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^0.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alyssongomes/SysDent.git"
+  },
+  "keywords": [
+    "dentista",
+    "consultorio",
+    "node"
+  ],
+  "author": "vacilasoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alyssongomes/SysDent/issues"
+  },
+  "homepage": "https://github.com/alyssongomes/SysDent#readme"
+}
