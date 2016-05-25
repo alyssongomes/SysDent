@@ -4,7 +4,7 @@ window.onload = function(){
 }
 
 function initTableUsers(){
-
+  console.log("Oi");
 }
 
 function initButtons(){
