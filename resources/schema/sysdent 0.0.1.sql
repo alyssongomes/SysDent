@@ -1,10 +1,6 @@
 -- Gera��o de Modelo f�sico
 -- Sql ANSI 2003 - brModelo.
 
-
-
-<<<<<<< HEAD
-=======
 CREATE TABLE user (
 cpf int PRIMARY KEY,
 name varchar(50),
@@ -16,7 +12,6 @@ zipcode int,
 idRole int
 )
 
->>>>>>> 6c2adda9031f859a50033ab5925002631d15095f
 CREATE TABLE role (
 id int PRIMARY KEY,
 role varchar(50)
