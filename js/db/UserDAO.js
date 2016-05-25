@@ -31,18 +31,18 @@ function UserDAO(){
 
   var findUser = function(name){
     var c = connection.connected();
-    c.query('SELECT * from WHERE name = %'+name+'%', function(err, row, fields) {
+    c.query('SELECT * from user WHERE name = %'+name+'%', function(err, row, fields) {
       if (err) throw err;
       return row;//retorna em json
     });
     c.end();
   };
 
-  var listUsers = function(){
+  var findUserLogin = function(cpf, senha){
     var c = connection.connected();
-    c.query('SELECT * from user', function(err, rows, fields) {
+    c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND senha =\''+senha+'\'', function(err, row, fields) {
       if (err) throw err;
-      return rows;//retorna em json
+      return row;//retorna em json
     });
     c.end();
   };
