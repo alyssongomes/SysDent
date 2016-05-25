@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/saveUser.css"></link>
+    <!--<script type="text/javascript" src="../js/db/ConnectionDatabase.js"></script>
+    <script type="text/javascript" src="../js/db/UserDAO.js"></script>
+    <script type="text/javascript" src="../js/models/User.js"></script>
+    <script type="text/javascript" src="../js/controllers/SaveUserController.js"></script>-->
+    <script type="text/javascript" src="../js/views/SaveUser.js"></script>
+    <title>Cadastro de Usuário</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h4>Cadastro de Usuário</h4>
+      <div id="message"></div>
+        <form >
+          <div class="col-xs-10">
+            <input class="form-control" type="text" name="localizar" placeholder="Quem você procura?" />
+          </div>
+          <div class="col-xs-12"><input class="form-control" type="text" name="nome" placeholder="Nome" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" name="senha" placeholder="Senha" /></div>
+          <div class="col-xs-5"><input class="form-control" type="text" name="telefone" placeholder="CPF" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" name="rua" placeholder="Rua" /></div>
+          <div class="col-xs-5"><input class="form-control" type="text" name="numero" placeholder="Número" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" name="distrito" placeholder="Distrito" /></div>
+          <div class="col-xs-5"><input class="form-control" type="text" name="CEP" placeholder="CEP" /></div>
+        </form>
+        <button class="btn btn-primary" id="btn-find">Localizar</button>
+        <button class="btn btn-primary" id="btn-save">Adicionar Usuário</button>
+        <button class="btn btn-success" id="btn-update">Atualizar Usuário</button>
+        <button class="btn btn-danger" id="btn-delete">Apagar Usuário</button>
+
+        <div class="col-xs-12">
+          <table class="table table-striped" style="overflow:scroll;" id="usuarios">
+          <tr>
+              <th></th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Rua</th>
+              <th>Número</th>
+              <th>CEP</th>
+          </tr>
+        </div>
+    </div>
+  </body>
+</html>
