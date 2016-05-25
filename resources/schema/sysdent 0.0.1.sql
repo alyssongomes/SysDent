@@ -1,4 +1,4 @@
--- Geração de Modelo físico
+-- Geraï¿½ï¿½o de Modelo fï¿½sico
 -- Sql ANSI 2003 - brModelo.
 
 
@@ -9,6 +9,7 @@ name varchar(50),
 street varchar(50),
 number varchar(50),
 district varchar(50),
+password varchar(50),
 zipcode int,
 idRole int
 )
