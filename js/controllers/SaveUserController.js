@@ -3,8 +3,8 @@ var Sync = require('sync');
 
 function SaveUserController(){
 
-  this.saveAttendant = function (name, cpf, password, street, number, district, zipcode, callback){
-    var u = new User(cpf, name,street, number,district,password,zipcode,2);
+  this.saveAttendant = function (name, cpf, password, street, number, district, zipcode, idFunction, callback){
+    var u = new User(cpf, name,street, number,district,password,zipcode,idFunction);
     return uDAO.saveUser(u,callback);
   };
 

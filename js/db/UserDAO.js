@@ -22,7 +22,7 @@ function UserDAO(){
       }
       callback(true);
     });
-  };
+  }
 
   this.deleteUser = function (cpf,callback){
     var c = connection.connected();
@@ -33,12 +33,12 @@ function UserDAO(){
         }
         callback(true);
       });
-  };
+    }
 
   this.updateUser = function (user,callback){
     var c = connection.connected();
-    var u = [user.name,user.street,user.number,user.district,user.password,user.zipcode,user.cpf];
-    c.query('UPDATE user SET name = ?, street = ?, number = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
+    var u = [user.name,user.street,user.phone,user.district,user.password,user.zipcode,user.cpf];
+    c.query('UPDATE user SET name = ?, street = ?, phone = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
       if (err){
         c.end();
         callback(false);
@@ -55,9 +55,8 @@ function UserDAO(){
         callback(null);
       }
       console.dir(row);
-      callback(row);
     });
-  };
+  }
 
   this.findUserLogin = function(cpf, senha,callback){
     var c = connection.connected();
@@ -68,11 +67,7 @@ function UserDAO(){
       }
       callback(row);
     });
-  };
+  }
 
+  return this;
 }
-
-var uDAO = new UserDAO();
-uDAO.findUserLogin("9000","allan",function(result){
-  console.log(result);
-});

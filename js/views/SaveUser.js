@@ -73,6 +73,7 @@ function initButtons(){
            document.getElementById("numero").value,
            document.getElementById("distrito").value,
            document.getElementById("CEP").value,
+           document.getElementById("papel").value,
            function(result){
              if (result === true) {
                message("success","Sucesso!","Usuário salvo!");
