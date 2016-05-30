@@ -60,23 +60,10 @@ function UserDAO(){
 
   this.findUserLogin = function(cpf, senha,callback){
     var c = connection.connected();
-<<<<<<< HEAD
-    c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND senha =\''+senha+'\'', function(err, row) {
-      if (err){
-        c.end();
-        callback(null);
-      }
-      callback(row);
-    });
-  }
-
-  return this;
-=======
     c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
       if (err) throw err;
       callback(row)
     });
     c.end();
   };
->>>>>>> 4580a1950a8f24d07c0b07ea320e5b4c37881967
 }
