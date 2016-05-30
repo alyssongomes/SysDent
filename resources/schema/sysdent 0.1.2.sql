@@ -1,11 +1,12 @@
--- Geração de Modelo físico
+-- Geraï¿½ï¿½o de Modelo fï¿½sico
 -- Sql ANSI 2003 - brModelo.
 
 
 
 CREATE TABLE function (
-id int PRIMARY KEY,
+id int AUTO_INCREMENT,
 function varchar(50)
+PRIMARY KEY(id)
 )
 
 CREATE TABLE appointment (
