@@ -42,7 +42,8 @@ function UserDAO(){
     c.end();
   };
 
-  var findUserLogin = function(cpf, senha, callback){
+  var findUserLogin = function(cpf, senha, callback)
+  {
     var c = connection.connected();
     c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND senha =\''+senha+'\'', function(err, row) {
       if (err) throw err;

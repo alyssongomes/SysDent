@@ -4,6 +4,11 @@
   <head>
     <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="../css/login.css" media="screen" title="no title" charset="utf-8">
+    <script src="" charset="utf-8"></script>
+    <script src="../js/db/ConnectionDatabase.js" charset="utf-8"></script>
+    <script src="../js/db/UserDAO.js" charset="utf-8"></script>
+    <script src="../js/controllers/loginController.js" charset="utf-8"></script>
+    <script src="../js/views/login.js" charset="utf-8"></script>
     <meta charset="utf-8">
     <title>Login - Sysdent</title>
   </head>
@@ -11,8 +16,8 @@
     <div class="container">
       <form class="form-signin">
         <h2 class="form-signin-heading">Por favor, Logue-se</h2>
-        <label for="inputEmail" class="sr-only">Endereço de E-mail</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+        <label for="inputEmail" class="sr-only">Nome de usuário</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Usuário" required autofocus>
         <label for="inputPassword" class="sr-only">Senha</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
         <div class="checkbox">
@@ -20,7 +25,7 @@
             <input type="checkbox" value="remember-me"> Lembrar de mim
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="actionClickLogin()">Logar</button>
       </form>
   </div> <!-- /container -->
   </body>
