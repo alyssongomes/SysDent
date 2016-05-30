@@ -2,9 +2,14 @@
 -- Sql ANSI 2003 - brModelo.
 
 CREATE TABLE function (
-id int PRIMARY KEY,
+id int AUTO_INCREMENT,
 function varchar(50)
+<<<<<<< HEAD
+PRIMARY KEY(id)
+)
+=======
 );
+>>>>>>> 756861715f1ec38cbdfcd558c951951c06d8bc4d
 
 CREATE TABLE appointment (
 id int PRIMARY KEY,
