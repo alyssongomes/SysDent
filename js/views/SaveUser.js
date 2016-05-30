@@ -18,46 +18,45 @@ function initTableUsers(){
 			document.getElementById("usuarios").deleteRow(i);
 		}
 
-    var users = suc.listAllAttendant();
-    table.appendChild(header);
-    for (var u of users) {
+    suc.listAllAttendant(function (users) {
+      table.appendChild(header);
+      for (var u of users) {
 
-      var check = document.createElement("input");
-      check.setAttribute("type","checkbox");
+        var check = document.createElement("input");
+        check.setAttribute("type","checkbox");
 
-      var name = document.createElement("th");
-      name.setAttribute("id",u.name);
-      name.appendChild(document.createTextNode(u.name));
+        var name = document.createElement("th");
+        name.setAttribute("id",u.name);
+        name.appendChild(document.createTextNode(u.name));
 
-      var cpf = document.createElement("th");
-      cpf.setAttribute("id",u.cpf);
-      cpf.appendChild(document.createTextNode(u.cpf));
+        var cpf = document.createElement("th");
+        cpf.setAttribute("id",u.cpf);
+        cpf.appendChild(document.createTextNode(u.cpf));
 
-      var street = document.createElement("th");
-      street.setAttribute("id",u.street);
-      street.appendChild(document.createTextNode(u.street));
+        var street = document.createElement("th");
+        street.setAttribute("id",u.street);
+        street.appendChild(document.createTextNode(u.street));
 
-      var number = document.createElement("th");
-      number.setAttribute("id",u.number);
-      number.appendChild(document.createTextNode(u.number));
+        var number = document.createElement("th");
+        number.setAttribute("id",u.number);
+        number.appendChild(document.createTextNode(u.number));
 
-      var zipcode = document.createElement("th");
-      zipcode.setAttribute("id",u.zipcode);
-      zipcode.appendChild(document.createTextNode(u.zipcode));
+        var zipcode = document.createElement("th");
+        zipcode.setAttribute("id",u.zipcode);
+        zipcode.appendChild(document.createTextNode(u.zipcode));
 
-      var row = document.createElement("tr");
-      row.setAttribute("id",u.cpf);
-      row.appendChild(check);
-      row.appendChild(name);
-      row.appendChild(cpf);
-      row.appendChild(street);
-      row.appendChild(number);
-      row.appendChild(zipcode);
+        var row = document.createElement("tr");
+        row.setAttribute("id",u.cpf);
+        row.appendChild(check);
+        row.appendChild(name);
+        row.appendChild(cpf);
+        row.appendChild(street);
+        row.appendChild(number);
+        row.appendChild(zipcode);
 
-      table.appendChild(row);
-    }
-
-
+        table.appendChild(row);
+      }
+    });
 }
 
 function initButtons(){
@@ -66,24 +65,22 @@ function initButtons(){
      if(document.getElementById("cpf").value === " " || document.getElementById("nome").value === " "){
        message("warning","Atenção!","Informe pelo menos o nome e o cpf do Atendente!");
      }else{
-       Sync(function () {
-         var result = suc.saveAttendant(
+         suc.saveAttendant(
            document.getElementById("nome").value,
            document.getElementById("cpf").value,
            document.getElementById("senha").value,
            document.getElementById("rua").value,
            document.getElementById("numero").value,
            document.getElementById("distrito").value,
-           document.getElementById("CEP").value);
-         //console.log("passou aki já");
-         console.log("Tá na view "+result);
-         if (result === true) {
-           message("success","Sucesso!","Usuário salvo!");
-           cleanFields();
-         }else{
-           message("danger","Erro!","Usuário não pode ser salvo!");
-         } 
-       })
+           document.getElementById("CEP").value,
+           function(result){
+             if (result === true) {
+               message("success","Sucesso!","Usuário salvo!");
+               cleanFields();
+             }else{
+               message("danger","Erro!","Usuário não pode ser salvo!");
+             }
+           });
      }
    };
 
@@ -96,12 +93,14 @@ function initButtons(){
        }
      }
 
-     if(suc.deleteAttendant(cpfs)){
-       initTableUsers();
-       message("success","Sucesso!","Usuário(s) Apagado(s)!");
-     }else{
-       message("danger","Erro!","Não foi possivel apagar o(s) Usuário(s)!");
-     }
+     suc.deleteAttendant(cpfs,function(result){
+       if(result){
+         initTableUsers();
+         message("success","Sucesso!","Usuário(s) Apagado(s)!");
+       }else{
+         message("danger","Erro!","Não foi possivel apagar o(s) Usuário(s)!");
+       }
+     })
 
    };
 
@@ -119,31 +118,33 @@ function initButtons(){
          document.getElementById("senha").value,
          document.getElementById("CEP").value,2);
 
-      console.log(user);
-
-       var result = suc.updateAttendant(user);
-       if(result){
-         message("success","Sucesso!","Usuário Atualizado!");
-       }else{
-         message("danger","Sucesso!","Usuário não pode ser Atualizado!");
-       }
+       suc.updateAttendant(user, function(result){
+         if(result){
+           initTableUsers();
+           message("success","Sucesso!","Usuário Atualizado!");
+         }else{
+           message("danger","Sucesso!","Usuário não pode ser Atualizado!");
+         }
+       });
      }
 
    };
 
    document.getElementById("btn-find").onclick =  function (){
-     var user = suc.findAttendant(document.getElementById("localizar").value);
-     if (user != null) {
-       document.getElementById("cpf").value = new String(user.cpf);
-       document.getElementById("senha").value = user.password;
-       document.getElementById("rua").value = user.street;
-       document.getElementById("numero").value = user.number;
-       document.getElementById("distrito").value = user.district;
-       document.getElementById("CEP").value = user.zipcode;
-       document.getElementById("nome").value = user.name;
-     }else{
-       message("danger","Erro!","Não foi possivel localizar o Usuário!");
-     }
+     suc.findAttendant(document.getElementById("localizar").value, function(user){
+       if (user != null) {
+         document.getElementById("cpf").value = new String(user[0].cpf);
+         document.getElementById("senha").value = user[0].password;
+         document.getElementById("rua").value = user[0].street;
+         document.getElementById("numero").value = user[0].number;
+         document.getElementById("distrito").value = user[0].district;
+         document.getElementById("CEP").value = user[0].zipcode;
+         document.getElementById("nome").value = user[0].name;
+       }else{
+         message("danger","Erro!","Não foi possivel localizar o Usuário!");
+       }
+     });
+
    };
 
    document.getElementById("btn-clean").onclick =  function (){
