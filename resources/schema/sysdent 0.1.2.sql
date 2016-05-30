@@ -12,29 +12,32 @@ PRIMARY KEY(id)
 >>>>>>> 756861715f1ec38cbdfcd558c951951c06d8bc4d
 
 CREATE TABLE appointment (
-id int PRIMARY KEY,
-idPatient int,
-idDentist int,
+id int AUTO_INCREMENT,
+idPatient varchar,
+idDentist varchar,
 schedule date,
 appointment time
+PRIMARY KEY(id)
 );
 
 CREATE TABLE diagnostic (
-id int PRIMARY KEY,
-idPatient int,
-idDentist int,
+id int AUTO_INCREMENT,
+idPatient varchar,
+idDentist varchar,
 diagnostic varchar(500)
+PRIMARY KEY(id)
 );
 
 CREATE TABLE payment (
-id int PRIMARY KEY,
+id int AUTO_INCREMENT,
 pValue double,
-idPatient int,
+idPatient varchar,
 payday date
+PRIMARY KEY(id)
 );
 
 CREATE TABLE user (
-cpf int PRIMARY KEY,
+cpf varchar PRIMARY KEY,
 name varchar(50),
 street varchar(50),
 phone varchar(50),
