@@ -3,38 +3,34 @@
 
 CREATE TABLE function (
 id int AUTO_INCREMENT,
-function varchar(50)
-<<<<<<< HEAD
+function varchar(50),
 PRIMARY KEY(id)
-)
-=======
 );
->>>>>>> 756861715f1ec38cbdfcd558c951951c06d8bc4d
 
 CREATE TABLE appointment (
 id int PRIMARY KEY,
-idPatient int,
-idDentist int,
+idPatient varchar(11),
+idDentist varchar(11),
 schedule date,
 appointment time
 );
 
 CREATE TABLE diagnostic (
 id int PRIMARY KEY,
-idPatient int,
-idDentist int,
+idPatient varchar(11),
+idDentist varchar(11),
 diagnostic varchar(500)
 );
 
 CREATE TABLE payment (
 id int PRIMARY KEY,
 pValue double,
-idPatient int,
+idPatient varchar(11),
 payday date
 );
 
 CREATE TABLE user (
-cpf int PRIMARY KEY,
+cpf varchar(11) PRIMARY KEY,
 name varchar(50),
 street varchar(50),
 phone varchar(50),
