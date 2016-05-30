@@ -13,5 +13,5 @@ function ConnectionDatabase(){
     this.connection.connect();
     return this.connection;
   };
-  
+
 }
