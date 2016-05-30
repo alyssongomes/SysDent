@@ -2,49 +2,70 @@ function UserDAO(){
 
   var connection = new ConnectionDatabase();
 
-  var saveUser = function (user){
+  this.listAllUsers = function (callback) {
+    var c = connection.connected();
+    c.query('SELECT * FROM user',function(err, rows){// recebe o dado em json
+      if (err){
+        c.end();
+        callback(null);
+      }
+      callback(rows);
+    });
+  }
+
+  this.saveUser = function (user,callback){
     var c = connection.connected();
     c.query('INSERT INTO user SET ?',user, function(err, result){// recebe o dado em json
-      if (err) throw err;
-      console.log(result);
+      if (err != null){
+        c.end();
+        callback(false);
+      }
+      callback(true);
     });
-    c.end();
-  };
+  }
 
-  var deleteUser = function (cpf){
+  this.deleteUser = function (cpf,callback){
     var c = connection.connected();
     c.query('DELETE FROM user WHERE cpf = ?',[cpf], function (err, result) {
-        if (err) throw err;
-        console.log(result);
+        if (err){
+          c.end();
+          callback(false);
+        }
+        callback(true);
       });
-    c.end();
-  };
+    }
 
-  var updateUser = function (user){
+  this.updateUser = function (user,callback){
     var c = connection.connected();
-    c.query('UPDATE user SET nome = ?, street = ?, number = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',user,function (err, result) {
-        if (err) throw err;
-        console.log(result);
-      });
-    c.end();
-  };
-
-  var findUser = function(name){
-    var c = connection.connected();
-    c.query('SELECT * from user WHERE name = %'+name+'%', function(err, row, fields) {
-      if (err) throw err;
-      return row;//retorna em json
+    var u = [user.name,user.street,user.phone,user.district,user.password,user.zipcode,user.cpf];
+    c.query('UPDATE user SET name = ?, street = ?, phone = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
+      if (err){
+        c.end();
+        callback(false);
+      }
+      callback(true);
     });
-    c.end();
   };
 
-  var findUserLogin = function(cpf, senha){
+  this.findUser = function(name,callback){
     var c = connection.connected();
-    c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND senha =\''+senha+'\'', function(err, row, fields) {
-      if (err) throw err;
-      return row;//retorna em json
+    c.query('SELECT * FROM user WHERE name like \'%'+name+'%\'', function(err, row) {
+      if (err){
+        c.end();
+        callback(null);
+      }
+      callback(row);
     });
-    c.end();
-  };
+  }
 
+  this.findUserLogin = function(cpf, senha,callback){
+    var c = connection.connected();
+    c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
+      if (err){
+        c.end();
+        callback(null);
+      }
+      callback(row);
+    });
+  };
 }

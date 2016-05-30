@@ -4,37 +4,48 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"></link>
     <link rel="stylesheet" type="text/css" href="../css/saveUser.css"></link>
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!--<script type="text/javascript" src="../js/db/ConnectionDatabase.js"></script>
+=======
+    <script type="text/javascript" src="../js/db/ConnectionDatabase.js"></script>
+>>>>>>> 52387e7d87e1d44b0e3434093126133544c5b406
     <script type="text/javascript" src="../js/db/UserDAO.js"></script>
     <script type="text/javascript" src="../js/models/User.js"></script>
-    <script type="text/javascript" src="../js/controllers/SaveUserController.js"></script>-->
+    <script type="text/javascript" src="../js/controllers/SaveUserController.js"></script>
     <script type="text/javascript" src="../js/views/SaveUser.js"></script>
     <title>Cadastro de Usuário</title>
   </head>
   <body>
     <div class="jumbotron">
-      <h4>Cadastro de Usuário</h4>
+      <h4>Cadastro de Atendente</h4>
       <div id="message"></div>
         <form >
           <div class="col-xs-10">
-            <input class="form-control" type="text" name="localizar" placeholder="Quem você procura?" />
+            <input class="form-control" type="text" id="localizar" placeholder="Quem você procura? ex.: Fulano de tal" />
           </div>
-          <div class="col-xs-12"><input class="form-control" type="text" name="nome" placeholder="Nome" /></div>
-          <div class="col-xs-7"><input class="form-control" type="text" name="senha" placeholder="Senha" /></div>
-          <div class="col-xs-5"><input class="form-control" type="text" name="telefone" placeholder="CPF" /></div>
-          <div class="col-xs-7"><input class="form-control" type="text" name="rua" placeholder="Rua" /></div>
-          <div class="col-xs-5"><input class="form-control" type="text" name="numero" placeholder="Número" /></div>
-          <div class="col-xs-7"><input class="form-control" type="text" name="distrito" placeholder="Distrito" /></div>
-          <div class="col-xs-5"><input class="form-control" type="text" name="CEP" placeholder="CEP" /></div>
+          <div class="col-xs-12"><input class="form-control" type="text" id="nome" placeholder="Nome" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" id="senha" placeholder="Senha" /></div>
+          <div class="col-xs-5"><input class="form-control" type="text" id="cpf" placeholder="CPF" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" id="rua" placeholder="Rua" /></div>
+          <div class="col-xs-5"><input class="form-control" type="text" id="numero" placeholder="Número" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" id="distrito" placeholder="Distrito" /></div>
+          <div class="col-xs-2"><input class="form-control" type="text" id="CEP" placeholder="CEP" /></div>
+          <div class="col-xs-3"><select class="form-control" type="text" id="papel" placeholder="Papel" >
+              <option value="2">Atendente</option>
+              <option value="3">Dentista</option>
+          </select>
+
+          </div>
         </form>
         <button class="btn btn-primary" id="btn-find">Localizar</button>
         <button class="btn btn-primary" id="btn-save">Adicionar Usuário</button>
         <button class="btn btn-success" id="btn-update">Atualizar Usuário</button>
         <button class="btn btn-danger" id="btn-delete">Apagar Usuário</button>
+        <button class="btn" id="btn-clean">Limpar Campos</button><br/><br/>
 
-        <div class="col-xs-12">
-          <table class="table table-striped" style="overflow:scroll;" id="usuarios">
+        <div class="col-xs-12" style="overflow:scroll; height:250px;">
+          <table class="table table-striped"  id="usuarios">
           <tr>
               <th></th>
               <th>Nome</th>
