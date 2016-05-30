@@ -10,6 +10,11 @@ function actionClickLogin()
     checkLogin(cpf,password,function(result)
     {
         if(result)
-          alert('Logado com sucesso');
+          alert('Bem-vindo ao sistema, ' + result.name);
+        else
+        {
+            document.getElementById('inputPassword').value = '';
+            alert('Login ou senha inválidos');
+        }
     });
 }

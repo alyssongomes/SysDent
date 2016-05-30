@@ -10,7 +10,8 @@ function ConnectionDatabase(){
   });
 
   this.connected = function(){
-      return _connection.connect();
+      _connection.connect()
+      return _connection;
   };
 
 }

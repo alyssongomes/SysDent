@@ -30,7 +30,7 @@ payday date
 );
 
 CREATE TABLE user (
-cpf varchar(11) PRIMARY KEY,
+cpf char(11) PRIMARY KEY,
 name varchar(50),
 street varchar(50),
 phone varchar(50),
