@@ -1,33 +1,19 @@
--- Geraï¿½ï¿½o de Modelo fï¿½sico
+-- Geração de Modelo físico
 -- Sql ANSI 2003 - brModelo.
 
 
 
-<<<<<<< HEAD
-=======
-CREATE TABLE user (
-cpf int PRIMARY KEY,
-name varchar(50),
-street varchar(50),
-number varchar(50),
-district varchar(50),
-password varchar(50),
-zipcode int,
-idRole int
-)
-
->>>>>>> 6c2adda9031f859a50033ab5925002631d15095f
-CREATE TABLE role (
+CREATE TABLE function (
 id int PRIMARY KEY,
-role varchar(50)
+function varchar(50)
 )
 
 CREATE TABLE appointment (
 id int PRIMARY KEY,
 idPatient int,
 idDentist int,
-date date,
-time time
+schedule date,
+appointment time
 )
 
 CREATE TABLE diagnostic (
@@ -37,27 +23,27 @@ idDentist int,
 diagnostic varchar(500)
 )
 
-CREATE TABLE user (
-cpf int PRIMARY KEY,
-name varchar(50),
-street varchar(50),
-number varchar(50),
-district varchar(50),
-zipcode int,
-idRole int,
-password varchar(50),
-FOREIGN KEY(idRole) REFERENCES role (id)
-)
-
 CREATE TABLE payment (
 id int PRIMARY KEY,
 value double,
 idPatient int,
-date date,
-FOREIGN KEY(idPatient) REFERENCES user (cpf)
+payday date
+)
+
+CREATE TABLE user (
+cpf int PRIMARY KEY,
+name varchar(50),
+street varchar(50),
+phone varchar(50),
+district varchar(50),
+zipcode int,
+idFunction int,
+password varchar(50),
+FOREIGN KEY(idFunction) REFERENCES function (id)
 )
 
 ALTER TABLE appointment ADD FOREIGN KEY(idPatient) REFERENCES user (cpf)
 ALTER TABLE appointment ADD FOREIGN KEY(idDentist) REFERENCES user (cpf)
 ALTER TABLE diagnostic ADD FOREIGN KEY(idPatient) REFERENCES user (cpf)
 ALTER TABLE diagnostic ADD FOREIGN KEY(idDentist) REFERENCES user (cpf)
+ALTER TABLE payment ADD FOREIGN KEY(idPatient) REFERENCES user (cpf)
