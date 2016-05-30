@@ -54,16 +54,18 @@ function UserDAO(){
         c.end();
         callback(null);
       }
-      console.dir(row);
+      callback(row);
     });
   }
 
   this.findUserLogin = function(cpf, senha,callback){
     var c = connection.connected();
     c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
-      if (err) throw err;
-      callback(row)
+      if (err){
+        c.end();
+        callback(null);
+      }
+      callback(row);
     });
-    c.end();
   };
 }
