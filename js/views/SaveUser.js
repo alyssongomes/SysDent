@@ -1,5 +1,4 @@
 var suc = new SaveUserController();
-var Sync = require('sync');
 
 window.onload = function(){
   initTableUsers();

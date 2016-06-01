@@ -1,5 +1,4 @@
 var uDAO = new UserDAO();
-var Sync = require('sync');
 
 function SaveUserController(){
 
