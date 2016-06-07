@@ -8,30 +8,35 @@
     <script type="text/javascript" src="../js/db/UserDAO.js"></script>
     <script type="text/javascript" src="../js/models/User.js"></script>
     <script type="text/javascript" src="../js/controllers/SaveUserController.js"></script>
-    <script type="text/javascript" src="../js/views/saveUser.js"></script>
-    <title>Cadastro de Usuário</title>
+    <script type="text/javascript" src="../js/views/savePatient.js"></script>
+    <title>Cadastro de Paciente</title>
   </head>
   <body>
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="main.html">Home</a></li>
+          </ul>
+          <p class="navbar-text navbar-right">Olá fulanim</p>
+        </div>
+      </nav>
+    </div>
     <div class="jumbotron">
-      <h4>Cadastro de Atendente</h4>
+      <h4>Cadastro de Paciente</h4>
       <div id="message"></div>
         <form >
           <div class="col-xs-10">
             <input class="form-control" type="text" id="localizar" placeholder="Quem você procura? ex.: Fulano de tal" />
           </div>
           <div class="col-xs-12"><input class="form-control" type="text" id="nome" placeholder="Nome" /></div>
-          <div class="col-xs-7"><input class="form-control" type="text" id="senha" placeholder="Senha" /></div>
+          <div class="col-xs-7"><input class="form-control" type="text" disabled id="senha" placeholder="Senha" /></div>
           <div class="col-xs-5"><input class="form-control" type="text" id="cpf" placeholder="CPF" /></div>
           <div class="col-xs-7"><input class="form-control" type="text" id="rua" placeholder="Rua" /></div>
           <div class="col-xs-5"><input class="form-control" type="text" id="numero" placeholder="Número" /></div>
           <div class="col-xs-7"><input class="form-control" type="text" id="distrito" placeholder="Distrito" /></div>
           <div class="col-xs-2"><input class="form-control" type="text" id="CEP" placeholder="CEP" /></div>
-          <div class="col-xs-3"><select class="form-control" type="text" id="papel" placeholder="Papel" >
-              <option value="2">Atendente</option>
-              <option value="3">Dentista</option>
-          </select>
-
-          </div>
+          <div class="col-xs-3"><input class="form-control" type="text" disabled id="papel" value="4"/></div>
         </form>
         <button class="btn btn-primary" id="btn-find">Localizar</button>
         <button class="btn btn-primary" id="btn-save">Adicionar Usuário</button>
