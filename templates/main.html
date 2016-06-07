@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="../lib/datapicker/bootstrap-datepicker3.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/main.css"></link>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/datapicker/bootstrap-datepicker.min.js"></script>
+    <script src="../js/views/main.js"></script>
+    <script>if (window.module) module = window.module;</script>
+    <title>Tela principal</title>
+  </head>
+  <body>
+    <br>
+    <div class="container" style="margin-top:20px;">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="main.html">Home</a></li>
+            <li><a href="savePatient.html">Novo Paciente</a></li>
+            <li><a href="#">Entrada de Produtos</a></li>
+          </ul>
+          <p class="navbar-text navbar-right">Olá fulanim</p>
+        </div>
+      </nav>
+    </div>
+    <div class="container" style="margin-top:20px;" >
+      <div class="row">
+        <div class="col-xs-4 " >
+          <div class="jumbotron" id="calendario">
+            <div class="panel panel-primary">
+              <div class="panel-heading"><center><h3 class="panel-title">Calendário</h3></center></div>
+              <div class="panel-body">
+                <div id="calendar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-8" >
+          <div class="jumbotron" id="agenda" >
+            <div class="panel panel-primary">
+              <div class="panel-heading"> <h3 class="panel-title">Agenda de hoje</h3> </div>
+              <div class="panel-body">
+                <div style="height:400px; overflow:scroll;">
+                  <table class="table table-hover">
+                    <thead>
+                      <th>Hora</th>
+                      <th>Paciente</th>
+                      <th>Dentista</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>14:30</td>
+                        <td>Allan Vidal</td>
+                        <td>Ingrid Carneiro</td>
+                      </tr>
+                      <tr>
+                        <td>13:30</td>
+                        <td>Alysson Gomes</td>
+                        <td>Brena Santiago</td>
+                      </tr>
+                      <tr>
+                        <td>14:30</td>
+                        <td>Allan Vidal</td>
+                        <td>Ingrid Carneiro</td>
+                      </tr>
+                      <tr>
+                        <td>13:30</td>
+                        <td>Alysson Gomes</td>
+                        <td>Brena Santiago</td>
+                      </tr>
+                      <tr>
+                        <td>14:30</td>
+                        <td>Allan Vidal</td>
+                        <td>Ingrid Carneiro</td>
+                      </tr>
+                      <tr>
+                        <td>13:30</td>
+                        <td>Alysson Gomes</td>
+                        <td>Brena Santiago</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="saveUser.html">Cadastrar Usuário</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -37,8 +37,8 @@ function initTableUsers(){
         street.appendChild(document.createTextNode(u.street));
 
         var number = document.createElement("th");
-        number.setAttribute("id",u.number);
-        number.appendChild(document.createTextNode(u.number));
+        number.setAttribute("id",u.phone);
+        number.appendChild(document.createTextNode(u.phone));
 
         var zipcode = document.createElement("th");
         zipcode.setAttribute("id",u.zipcode);
@@ -77,6 +77,7 @@ function initButtons(){
              if (result === true) {
                message("success","Sucesso!","Usuário salvo!");
                cleanFields();
+               initTableUsers();
              }else{
                message("danger","Erro!","Usuário não pode ser salvo!");
              }
@@ -136,7 +137,7 @@ function initButtons(){
          document.getElementById("cpf").value = new String(user[0].cpf);
          document.getElementById("senha").value = user[0].password;
          document.getElementById("rua").value = user[0].street;
-         document.getElementById("numero").value = user[0].number;
+         document.getElementById("numero").value = user[0].phone;
          document.getElementById("distrito").value = user[0].district;
          document.getElementById("CEP").value = user[0].zipcode;
          document.getElementById("nome").value = user[0].name;
@@ -153,8 +154,8 @@ function initButtons(){
 }
 
 function message(type,title,body){
-  document.getElementById("message").innerHTML = "<div class='alert alert-"+type+"'>"+
-  "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+  document.getElementById("message").innerHTML = "<div class='alert alert-"+type+" alert-dismissible' role='alert'>"+
+  "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"+
   "<strong>"+title+"</strong>"+body
   +"</div>";
 }

@@ -10,7 +10,10 @@ function actionClickLogin()
     checkLogin(cpf,password,function(result)
     {
         if(result)
+        {
           alert('Bem-vindo ao sistema, ' + result.name);
+          location.href = "main.html";
+        }
         else
         {
             document.getElementById('inputPassword').value = '';

@@ -1,0 +1,9 @@
+#calendario{
+  height: 400px;
+}
+
+#agenda{
+  height: 550px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
