@@ -5,13 +5,13 @@ insert into function (function) values ("GERENTE");
 insert into function (function) values ("PACIENTE");
 
 
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("00000000000", "Peter Parker", "5588999939495","Rua da casa do aranha","Queens",00000000, 3,1234);
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("12345678900", "Otto Octavios", "5588999394945","Rua da casa do aranha","Queens",00000000, 2,1234);
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("66666666666", "Mary Jane Watson", "5588997546355","Rua da casa do aranha","Queens",00000000, 1,1234);
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("99999999999", "Gwen Stacy", "5588995956787","Rua da casa do aranha","Queens",00000000, 4,1234);
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("19999999991", "Miles Morales", "5588995996788","Rua dos bobos","Quixada",69000000, 4,1234);
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("11999999991", "Eddie Brock", "5588999778877","Rua da cidade","Quixada",63900000, 4,1234);
-insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("11999999911", "Ben Reilly", "5588999777777","Rua B","Quixada",63900001, 4,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("00000000000", "Peter Parker", "Rua da casa do aranha","5588999939495","Queens",00000000, 3,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("12345678900", "Otto Octavios", "Rua da casa do aranha","5588999394945","Queens",00000000, 2,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("66666666666", "Mary Jane Watson", "Rua da casa do aranha","5588997546355","Queens",00000000, 1,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("99999999999", "Gwen Stacy", "Rua da casa do aranha","5588995956787","Queens",00000000, 4,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("19999999991", "Miles Morales", "Rua dos bobos","5588995996788","Quixada",69000000, 4,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("11999999991", "Eddie Brock","Rua da cidade","5588999778877","Quixada",63900000, 4,1234);
+insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("11999999911", "Ben Reilly", "Rua B","5588999777777","Quixada",63900001, 4,1234);
 
 
 insert into diagnostic (id, idPatient, idDentist, diagnostic) values ("11999999911", "12345678900", "tá com os dentes podres");
