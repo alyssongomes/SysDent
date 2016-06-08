@@ -1,5 +1,4 @@
 var suc = new SaveUserController();
-var Sync = require('sync');
 
 window.onload = function(){
   initTableUsers();
@@ -149,10 +148,9 @@ function initButtons(){
          message("danger","Erro!","Não foi possivel localizar o Usuário!");
        }
      });
-
    };
 
-   document.getElementById("btn-clean").onclick =  function (){
+  document.getElementById("btn-clean").onclick =  function (){
      cleanFields();
    };
 }
