@@ -17,29 +17,30 @@
     <div class="container" style="margin-top:20px;">
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+          <div class="hidden-xs">
           <ul class="nav navbar-nav">
             <li class="active"><a href="main.html">Home</a></li>
             <li><a href="savePatient.html">Novo Paciente</a></li>
             <li><a href="#">Entrada de Produtos</a></li>
           </ul>
+          </div>
           <p class="navbar-text navbar-right">Olá fulanim</p>
         </div>
       </nav>
     </div>
     <div class="container" style="margin-top:20px;" >
       <div class="row">
-        <div class="col-xs-3">
+        <div class="col-sm-3">
           <div class="jumbotron" id="calendario">
             <div class="panel panel-primary">
               <div class="panel-heading"><center><h3 class="panel-title">Calendário</h3></center></div>
               <div class="panel-body">
-                <div id="calendar"></div>
+                <div id="calendar" style="overflow:scroll"></div>
               </div>
             </div>
-            <button class="btn btn-primary" id="btn-appointment">Marcar Consulta</button>
           </div>
         </div>
-        <div class="col-xs-9  " >
+        <div class="col-sm-9  " >
           <div class="jumbotron" id="agenda" >
             <div class="panel panel-primary">
               <div class="panel-heading"> <h3 class="panel-title">Agenda de hoje</h3> </div>
@@ -85,8 +86,10 @@
                     </tbody>
                   </table>
                 </div>
+                <button class="btn btn-primary pull-right" id="btn-appointment">Marcar Consulta</button>
               </div>
             </div>
+
           </div>
         </div>
         <a href="saveUser.html">Cadastrar Usuário</a>

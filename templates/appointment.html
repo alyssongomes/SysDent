@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/saveUser.css"></link>
+    <script type="text/javascript" src="../js/db/ConnectionDatabase.js"></script>
+    <script type="text/javascript" src="../js/db/UserDAO.js"></script>
+    <script type="text/javascript" src="../js/models/User.js"></script>
+   <!-- Alterar as linhas abaixo para incluir o script correto-->
+    <script type="text/javascript" src="../js/controllers/SaveUserController.js"></script>
+    <script type="text/javascript" src="../js/views/savePatient.js"></script>
+    <title>Marcar Consulta</title>
+  </head>
+  <body>
+      <div class="jumbotron" style="height:220px">
+          <h4>Nova Consulta</h4>
+          <div id="message"></div>
+          <form>
+              <div class="col-xs-4"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
+              <div class="col-xs-6"><input class="form-control" type="text" id="name" placeholder="Paciente" disabled/></div>
+              <div class="col-xs-4"><select class="form-control" type="text" id="dentist"/>
+                  <option value="user.id">Ingrid Carneiro</option>
+                  <option value="user.id">Brena Santiago</option>
+                  </select>
+              </div>
+              <div class="col-xs-4"><input class="form-control" type="date" id="schedule" disabled/></div>
+              <div class="col-xs-4"><input class="form-control" type="time" id="appointment"/></div>
+              
+          </form>
+          <button class="btn btn-primary" id="btn-find">Localizar</button>
+          <div class="pull-right" style="padding-right: 20px"><button class="btn btn-success" id="btn-confirm">Confirmar</button></div>
+          <div class="pull-right" style="padding-right: 20px"><button class="btn btn-danger" id="btn-cancel">Cancelar</button></div>
+          
+      </div>
+  </body>
