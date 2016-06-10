@@ -89,7 +89,39 @@
                     </tbody>
                   </table>
                 </div>
-                <button class="btn btn-primary pull-right" id="btn-appointment">Marcar Consulta</button>
+                <button class="btn btn-primary pull-right" id="btn-appointment" data-toggle="modal" data-target="#newAppointment">Marcar Consulta</button>
+                <div class="modal fade" id="newAppointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="newAppointmentLabel">Nova Consulta</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <form>
+                              <div class="col-xs-4" style="padding-bottom: 3px"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
+                              <div class="col-xs-6" style="padding-bottom: 3px"><input class="form-control" type="text" id="name" placeholder="Paciente" disabled/></div>
+                              <button type="button" class="btn btn-primary" id="btn-find">Localizar</button>
+                              <div class="col-xs-4" style="padding-bottom: 3px">
+                                <select class="form-control" type="text" id="dentist"/>
+                                  <option value="user.id">Ingrid Carneiro</option>
+                                  <option value="user.id">Brena Santiago</option>
+                                </select>
+                              </div>
+                              <div class="col-xs-4"><input class="form-control" type="date" id="schedule" disabled/></div>
+                              <div class="col-xs-4"><input class="form-control" type="time" id="appointment"/></div>                            
+                          </form>
+                          
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
