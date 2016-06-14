@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css"></link>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/bootstrap/bootstrap.min.js"></script>
     <script src="../lib/datapicker/bootstrap-datepicker.min.js"></script>
+    <script src="../lib/datapicker/bootstrap-datepicker.pt-BR.min.js"></script>
     <script src="../js/views/main.js"></script>
     <script>if (window.module) module = window.module;</script>
     <title>Tela principal</title>
@@ -17,29 +19,32 @@
     <div class="container" style="margin-top:20px;">
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+          <div class="hidden-xs">
           <ul class="nav navbar-nav">
             <li class="active"><a href="main.html">Home</a></li>
             <li><a href="savePatient.html">Novo Paciente</a></li>
             <li><a href="#">Entrada de Produtos</a></li>
             <li><a href="saveUser.html">Cadastrar Usuário</a></li>
           </ul>
+          </div>
           <p class="navbar-text navbar-right">Olá fulanim</p>
         </div>
       </nav>
     </div>
     <div class="container" style="margin-top:20px;" >
       <div class="row">
-        <div class="col-xs-4 " >
-          <div class="jumbotron" id="calendario">
+        <div class="col-sm-3">
+          <div id="calendario">
             <div class="panel panel-primary">
               <div class="panel-heading"><center><h3 class="panel-title">Calendário</h3></center></div>
               <div class="panel-body">
-                <div id="calendar"></div>
+                <center><div class="visible-lg" id="calendar" style="padding-left:0px"></div></center>
+                <div class="hidden-lg" id="inCalendar"><input class="form-control" type="text"></input></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xs-8" >
+        <div class="col-sm-9" >
           <div class="jumbotron" id="agenda" >
             <div class="panel panel-primary">
               <div class="panel-heading"> <h3 class="panel-title">Agenda de hoje</h3> </div>
@@ -85,8 +90,42 @@
                     </tbody>
                   </table>
                 </div>
+                <button class="btn btn-primary pull-right" id="btn-appointment" data-toggle="modal" data-target="#newAppointment">Marcar Consulta</button>
+                <div class="modal fade" id="newAppointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="newAppointmentLabel">Nova Consulta</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <form>
+                              <div class="col-xs-4" style="padding-bottom: 3px"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
+                              <div class="col-xs-6" style="padding-bottom: 3px"><input class="form-control" type="text" id="name" placeholder="Paciente" disabled/></div>
+                              <button type="button" class="btn btn-primary" id="btn-find">Localizar</button>
+                              <div class="col-xs-4" style="padding-bottom: 3px">
+                                <select class="form-control" type="text" id="dentist"/>
+                                  <option value="user.id">Ingrid Carneiro</option>
+                                  <option value="user.id">Brena Santiago</option>
+                                </select>
+                              </div>
+                              <div class="col-xs-4"><input class="form-control" type="date" id="schedule" disabled/></div>
+                              <div class="col-xs-4"><input class="form-control" type="time" id="appointment"/></div>
+                          </form>
+
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
