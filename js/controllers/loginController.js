@@ -2,7 +2,7 @@ function checkLogin(username,password,callback)
 {
   var dao = new UserDAO();
   dao.findUserLogin(username,password,function(result){
-      var user = result[0];
+      var user = result;
       console.log(result);
       if(user)
       {

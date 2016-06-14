@@ -1,4 +1,4 @@
-function Appointment(patient,dentist,schedule,appointment)
+function Appointment(idPatient,idDentist,schedule,appointment)
 {
-  return {patient,dentist,schedule,appointment}
+  return {idPatient,idDentist,schedule,appointment}
 }

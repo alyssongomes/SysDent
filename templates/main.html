@@ -10,6 +10,10 @@
     <script src="../lib/bootstrap/bootstrap.min.js"></script>
     <script src="../lib/datapicker/bootstrap-datepicker.min.js"></script>
     <script src="../lib/datapicker/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="../js/db/ConnectionDatabase.js"></script>
+    <script src="../js/db/AppointmentDAO.js"></script>
+    <script src="../js/models/Appointment.js"></script>
+    <script src="../js/controllers/mainController.js"></script>
     <script src="../js/views/main.js"></script>
     <script>if (window.module) module = window.module;</script>
     <title>Tela principal</title>
@@ -50,43 +54,14 @@
               <div class="panel-heading"> <h3 class="panel-title">Agenda de hoje</h3> </div>
               <div class="panel-body">
                 <div style="height:400px; overflow:scroll;">
-                  <table class="table table-hover">
+                  <table class="table table-hover" id="table-scheduled">
                     <thead>
                       <th>Hora</th>
                       <th>Paciente</th>
                       <th>Dentista</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>14:30</td>
-                        <td>Allan Vidal</td>
-                        <td>Ingrid Carneiro</td>
-                      </tr>
-                      <tr>
-                        <td>13:30</td>
-                        <td>Alysson Gomes</td>
-                        <td>Brena Santiago</td>
-                      </tr>
-                      <tr>
-                        <td>14:30</td>
-                        <td>Allan Vidal</td>
-                        <td>Ingrid Carneiro</td>
-                      </tr>
-                      <tr>
-                        <td>13:30</td>
-                        <td>Alysson Gomes</td>
-                        <td>Brena Santiago</td>
-                      </tr>
-                      <tr>
-                        <td>14:30</td>
-                        <td>Allan Vidal</td>
-                        <td>Ingrid Carneiro</td>
-                      </tr>
-                      <tr>
-                        <td>13:30</td>
-                        <td>Alysson Gomes</td>
-                        <td>Brena Santiago</td>
-                      </tr>
+
                     </tbody>
                   </table>
                 </div>
@@ -102,23 +77,20 @@
                         <div class="row">
                           <form>
                               <div class="col-xs-4" style="padding-bottom: 3px"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
-                              <div class="col-xs-6" style="padding-bottom: 3px"><input class="form-control" type="text" id="name" placeholder="Paciente" disabled/></div>
+                              <div class="col-xs-6" style="padding-bottom: 3px"><input class="form-control wrong" type="text" id="name" placeholder="Paciente" disabled/></div>
                               <button type="button" class="btn btn-primary" id="btn-find">Localizar</button>
                               <div class="col-xs-4" style="padding-bottom: 3px">
-                                <select class="form-control" type="text" id="dentist"/>
-                                  <option value="user.id">Ingrid Carneiro</option>
-                                  <option value="user.id">Brena Santiago</option>
-                                </select>
+                                <select class="form-control" type="text" id="dentist"/></select>
                               </div>
-                              <div class="col-xs-4"><input class="form-control" type="date" id="schedule" disabled/></div>
+                              <div class="col-xs-4"><input class="form-control" type="date" id="schedule"/></div>
                               <div class="col-xs-4"><input class="form-control" type="time" id="appointment"/></div>
                           </form>
 
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="btn-mark">Confirmar</button>
                       </div>
                     </div>
                   </div>
