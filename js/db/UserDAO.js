@@ -7,6 +7,7 @@ function UserDAO(){
     c.query('SELECT * FROM user',function(err, rows){// recebe o dado em json
       if (err){
         c.end();
+        console.log("ERRO: " + err);
         callback(null);
       }
       callback(rows);
@@ -62,6 +63,7 @@ function UserDAO(){
     var c = connection.connected();
     c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
       if (err){
+        console.log("ERRO: " + err);
         c.end();
         callback(null);
       }

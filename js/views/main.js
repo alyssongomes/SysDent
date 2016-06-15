@@ -1,4 +1,5 @@
 var mc = new MainController();
+var data = null;
 
 window.onload = function(){
   $("#calendar").datepicker({
@@ -10,6 +11,8 @@ window.onload = function(){
     daysOfWeekHighlighted: "0",
     todayHighlight: true
   }).on('changeDate',function (e) {
+    data = e.date.toDateString()
+    $("#schedule").val(data);
     selectAppointments(e.date);
   });
 
@@ -23,6 +26,8 @@ window.onload = function(){
     daysOfWeekHighlighted: "0",
     todayHighlight: true
   }).on('changeDate',function(e){
+    data = e.date.toDateString()
+    $("#schedule").val(data);
     selectAppointments(e.date);
   });
 
@@ -59,6 +64,7 @@ function initButtons(){
       function (result) {
         if(result){
           alert("Consulta agendada");
+          initTableScheduled();
         }else{
           alert("Erro ao agendar consulta");
         }
