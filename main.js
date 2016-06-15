@@ -1,4 +1,6 @@
-const electron = require('electron');
+const electron  = require('electron');
+const session   = electron.session;
+
 // Module to control application life.
 const {app} = electron;
 // Module to create native browser window.
@@ -28,10 +30,6 @@ function createWindow() {
   });
 }
 
-function loadURL(pageName)
-{
-  win.loadURL('file://' + __dirname + '/templates/' + pageName);
-}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

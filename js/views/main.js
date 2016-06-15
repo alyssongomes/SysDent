@@ -1,6 +1,7 @@
 var mc = new MainController();
 
 window.onload = function(){
+  $("#nome-usuario").text = usuario_logado.name;
   $("#calendar").datepicker({
     weekStart: 1,
     maxViewMode: 2,
