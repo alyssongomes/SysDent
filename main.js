@@ -1,6 +1,7 @@
 const electron  = require('electron');
 const session   = electron.session;
 
+
 // Module to control application life.
 const {app} = electron;
 // Module to create native browser window.
@@ -9,6 +10,7 @@ const {BrowserWindow} = electron;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
+
 
 function createWindow() {
   // Create the browser window.
@@ -28,6 +30,8 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
+
+
 }
 
 
