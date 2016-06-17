@@ -16,7 +16,7 @@ function actionClickLogin()
         {
           alert('Bem-vindo ao sistema, ' + usuario.name);
           sessionStorage.setItem('usuarioName',usuario.name);
-          sessionStorage.setItem('usuarioId',usuario.id);
+          sessionStorage.setItem('usuarioCpf',usuario.cpf);
           sessionStorage.setItem('usuarioFunction',usuario.idFunction);
           location.href = "main.html";
         }
