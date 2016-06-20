@@ -4,11 +4,11 @@ function SaveUserController(){
 
   this.saveAttendant = function (name, cpf, password, street, number, district, zipcode, idFunction, callback){
     var u = new User(cpf, name,street, number,district,password,zipcode,idFunction);
-    return uDAO.saveUser(u,callback);
+    return uDAO.save(u,callback);
   };
 
   this.listAllAttendant = function(callback){
-    return uDAO.listAllUsers(callback);
+    return uDAO.listAll(callback);
   }
 
   this.deleteAttendant = function (listCpfAttendant,callback){
@@ -18,7 +18,7 @@ function SaveUserController(){
     }
 
     for (var cpf of listCpfAttendant) {
-      uDAO.deleteUser(cpf, function (result) {
+      uDAO.delete(cpf, function (result) {
         if (result === false) {
           callback(false);
         }
@@ -28,11 +28,11 @@ function SaveUserController(){
   }
 
   this.updateAttendant = function (attendant, callback){
-    return uDAO.updateUser(attendant,callback);
+    return uDAO.update(attendant,callback);
   }
 
   this.findAttendant = function (name,callback){
-    return uDAO.findUser(name,callback);
+    return uDAO.find(name,callback);
   }
 
 }

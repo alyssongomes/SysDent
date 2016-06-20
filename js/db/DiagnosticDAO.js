@@ -1,10 +1,10 @@
-function UserDAO(){
+function diagnosticDAO(){
 
   var connection = new ConnectionDatabase();
 
   this.listAll = function (callback) {
     var c = connection.connected();
-    c.query('SELECT * FROM user',function(err, rows){// recebe o dado em json
+    c.query('SELECT * FROM diagnostic',function(err, rows){// recebe o dado em json
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
@@ -15,9 +15,9 @@ function UserDAO(){
     });
   }
 
-  this.save = function (user,callback){
+  this.save = function (diagnostic,callback){
     var c = connection.connected();
-    c.query('INSERT INTO user SET ?',[user], function(err, result){// recebe o dado em json
+    c.query('INSERT INTO diagnostic SET ?',diagnostic, function(err, result){// recebe o dado em json
       if (err){
         console.log("[ERROR] " + err.message);
         callback(false);
@@ -30,7 +30,7 @@ function UserDAO(){
 
   this.delete = function (cpf,callback){
     var c = connection.connected();
-    c.query('DELETE FROM user WHERE cpf = ?',[cpf], function (err, result) {
+    c.query('DELETE FROM diagnostic WHERE cpf = ?',[cpf], function (err, result) {
         if (err){
           console.log("[ERROR] " + err.message);
           callback(false);
@@ -41,10 +41,10 @@ function UserDAO(){
       });
     }
 
-  this.update = function (user,callback){
+  this.update = function (diagnostic,callback){
     var c = connection.connected();
-    var u = [user.name,user.street,user.phone,user.district,user.password,user.zipcode,user.cpf];
-    c.query('UPDATE user SET name = ?, street = ?, phone = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
+    var u = [diagnostic.name,diagnostic.street,diagnostic.phone,diagnostic.district,diagnostic.password,diagnostic.zipcode,diagnostic.cpf];
+    c.query('UPDATE diagnostic SET name = ?, street = ?, phone = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(false);
@@ -56,7 +56,7 @@ function UserDAO(){
 
   this.find = function(name,callback){
     var c = connection.connected();
-    c.query('SELECT * FROM user WHERE name like %?%',[name], function(err, row) {
+    c.query('SELECT * FROM diagnostic WHERE name like \'%'+name+'%\'', function(err, row) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
@@ -67,9 +67,9 @@ function UserDAO(){
     });
   }
 
-  this.findByLogin = function(cpf, senha,callback){
+  this.findByPatient = function(cpf, senha,callback){
     var c = connection.connected();
-    c.query('SELECT * from user WHERE cpf = ? AND password = ? ',[cpf,senha], function(err, row) {
+    c.query('SELECT * from diagnostic WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
