@@ -1,16 +1,14 @@
-var PDFDocument = require('pdfkit')
+var fs          = require('fs')
 
-function PDFGenerator(filename,generationMethod)
+var PDFGenerator = function(generationMethod)
 {
-  this.filename = filename;
   this.generationMethod = generationMethod;
 
-  this.generate = function(documentType,content)
+  this.generate = function(filename,content)
   {
-      
+    var file = fs.createWriteStream(filename);
+    this.generationMethod.generateDocument(file,content);
   }
 }
 
 module.exports = PDFGenerator;
-
-doc = new PDFDocument;

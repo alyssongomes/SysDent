@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "Um aplicativo Desktop para ser usado em consultórios de dentistas.",
   "main": "main.js",
-  "dependencies":{
-      "mysql": "^2.10.2",
-      "jQuery": "^1.7.4"
+  "dependencies": {
+    "jQuery": "^1.7.4",
+    "mysql": "^2.10.2",
+    "pdfkit": "^0.7.2"
   },
   "devDependencies": {
     "electron-prebuilt": "^1.1.1"
