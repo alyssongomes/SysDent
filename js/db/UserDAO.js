@@ -79,4 +79,18 @@ function UserDAO(){
       c.end();
     });
   };
+
+  this.findUserCpf = function(cpf,callback){
+    var con = new ConnectionDatabase();
+    var c = con.connected();
+    c.query('SELECT * FROM user WHERE cpf = ?', [cpf], function(err, row) {
+      if (err){
+        c.end();
+        callback(null);
+      }
+      callback(row);
+      c.end();
+    });
+  }
+
 }

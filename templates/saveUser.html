@@ -18,11 +18,11 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="main.html">Home</a></li>
           </ul>
-          <p class="navbar-text navbar-right">Olá fulanim</p>
+          <p class="navbar-text navbar-right" >Olá <span id="nome-usuario"></span> </p>
         </div>
       </nav>
     </div>
-    <div class="jumbotron">
+    <div class="jumbotron" style="height:620px;">
       <h4>Cadastro de Atendentes e Dentistas</h4>
       <div id="message"></div>
         <form >
@@ -49,16 +49,19 @@
         <button class="btn btn-danger" id="btn-delete">Apagar Usuário</button>
         <button class="btn" id="btn-clean">Limpar Campos</button><br/><br/>
 
-        <div class="col-xs-12" style="overflow:scroll; height:250px;">
+        <div class="col-xs-12" style="overflow:auto; height:210px;">
           <table class="table table-striped"  id="usuarios">
-          <tr>
-              <th></th>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Rua</th>
-              <th>Número</th>
-              <th>CEP</th>
-          </tr>
+            <thead>
+              <tr>
+                  <th></th>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Rua</th>
+                  <th>Número</th>
+                  <th>CEP</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
         </div>
     </div>
   </body>

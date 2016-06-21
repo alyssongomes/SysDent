@@ -1,10 +1,24 @@
-function diagnosticDAO(){
+function DiagnosticDAO(){
 
   var connection = new ConnectionDatabase();
 
   this.listAll = function (callback) {
     var c = connection.connected();
     c.query('SELECT * FROM diagnostic',function(err, rows){// recebe o dado em json
+      if (err){
+        console.log("[ERROR] " + err.message);
+        callback(null);
+      }
+      else
+        callback(rows);
+      c.end();
+    });
+  }
+
+  this.findHistoricCpf = function(cpf,callback){
+    var con = new ConnectionDatabase();
+    var c = con.connected();
+    c.query('SELECT id, name, (select name from user where cpf = d.idDentist) as dentist, diagnostic, schedule FROM diagnostic as d, user WHERE cpf = idPatient AND idPatient = ?', cpf, function(err, rows) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
@@ -27,6 +41,17 @@ function diagnosticDAO(){
       c.end();
     });
   }
+
+  this.listDetails = function(idDiagnostic,callback){
+    var con = new ConnectionDatabase();
+    var c = con.connected();
+    c.query('SELECT * FROM diagnostic WHERE id = ?',idDiagnostic, function(err, rows) {
+      if (err)
+        callback(null);
+      else
+        callback(rows);
+      });
+    }
 
   this.delete = function (cpf,callback){
     var c = connection.connected();
@@ -69,7 +94,7 @@ function diagnosticDAO(){
 
   this.findByPatient = function(cpf, senha,callback){
     var c = connection.connected();
-    c.query('SELECT * from diagnostic WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
+    c.query('SELECT * from diagnostic WHERE cpf = ? AND password = ? ',[cpf,senha], function(err, row) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);

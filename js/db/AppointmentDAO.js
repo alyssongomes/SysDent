@@ -12,20 +12,6 @@ function AppointmentDAO(){
     });
   }
 
-  this.findUserCpf = function(cpf,callback){
-    var con = new ConnectionDatabase();
-    var c = con.connected();
-    c.query('SELECT * FROM user WHERE cpf = \''+cpf+'\'', function(err, row) {
-      if (err){
-        c.end();
-        callback(null);
-      }
-      //console.log(row);
-      callback(row);
-      c.end();
-    });
-  }
-
   this.listAllDentists = function (callback) {
     var con = new ConnectionDatabase();
     var c = con.connected();

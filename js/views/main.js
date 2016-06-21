@@ -70,9 +70,10 @@ function btnMarkOnClick ()
     mc.saveAppointment(appointment,
       function (result)
       {
-        if(result)
+        if(result){
           alert("Consulta agendada");
-        else
+          initTableScheduled();
+        }else
           alert("Erro ao agendar consulta");
       });
 }
@@ -125,7 +126,7 @@ function selectAppointments(data)
 
       if(new Date(appointments[i].schedule).toDateString()
           == data.toDateString())
-        $("#table-scheduled").find("tbody").append();
+        $("#table-scheduled").find("tbody").append(novaLinhaNaTabela);
     }
   });
 }
@@ -139,10 +140,6 @@ function initComboBox()
       $("#dentist").append("<option value="+dentists[i].cpf+">"+dentists[i].name+"</option>");
     }
   });
-}
-
-function saveAppointment(){
-
 }
 
 function clean(){

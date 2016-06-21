@@ -1,4 +1,4 @@
-function Diagostic(patient,dentist,diagnostic_name)
+function Diagnostic(idPatient,idDentist,diagnostic,schedule)
 {
-  return {patient,dentist,diagnostic_name};
+  return {idPatient,idDentist,diagnostic,schedule};
 }
