@@ -1,3 +1,5 @@
+var electron = require('electron')
+
 function actionClickLogin()
 {
     var cpf          = document.getElementById('inputCpf').value;
@@ -13,6 +15,9 @@ function actionClickLogin()
         if(usuario)
         {
           alert('Bem-vindo ao sistema, ' + usuario.name);
+          sessionStorage.setItem('usuarioName',usuario.name);
+          sessionStorage.setItem('usuarioCpf',usuario.cpf);
+          sessionStorage.setItem('usuarioFunction',usuario.idFunction);
           location.href = "main.html";
         }
         else

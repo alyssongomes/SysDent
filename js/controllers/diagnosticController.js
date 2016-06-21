@@ -7,15 +7,15 @@ function DiagnosticController(){
     return dDAO.findHistoricCpf(cpf,callback);
   }
 
-  this.registerDiagnostic = function (diagnostic,callback){
-    return dDAO.registerDiagnostic(diagnostic,callback);
+  this.save = function (diagnostic,callback){
+    return dDAO.save(diagnostic,callback);
   }
 
   this.findPatienceCpf = function (cpf,callback){
     return uDAO.findUserCpf(cpf,callback);
   }
 
-  this.listDetailsDiagnostic = function(idDiagnostic, callback){
-    return dDAO.listDetailsDiagnostic(idDiagnostic,callback);
+  this.listDetails = function(idDiagnostic, callback){
+    return dDAO.listDetails(idDiagnostic,callback);
   }
 }

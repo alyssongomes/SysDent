@@ -17,7 +17,7 @@ function UserDAO(){
 
   this.save = function (user,callback){
     var c = connection.connected();
-    c.query('INSERT INTO user SET ?',user, function(err, result){// recebe o dado em json
+    c.query('INSERT INTO user SET ?',[user], function(err, result){// recebe o dado em json
       if (err){
         console.log("[ERROR] " + err.message);
         callback(false);
@@ -56,7 +56,7 @@ function UserDAO(){
 
   this.find = function(name,callback){
     var c = connection.connected();
-    c.query('SELECT * FROM user WHERE name like \'%'+name+'%\'', function(err, row) {
+    c.query('SELECT * FROM user WHERE name like %?%',[name], function(err, row) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
@@ -69,7 +69,7 @@ function UserDAO(){
 
   this.findByLogin = function(cpf, senha,callback){
     var c = connection.connected();
-    c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
+    c.query('SELECT * from user WHERE cpf = ? AND password = ? ',[cpf,senha], function(err, row) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
@@ -83,7 +83,7 @@ function UserDAO(){
   this.findUserCpf = function(cpf,callback){
     var con = new ConnectionDatabase();
     var c = con.connected();
-    c.query('SELECT * FROM user WHERE cpf = \''+cpf+'\'', function(err, row) {
+    c.query('SELECT * FROM user WHERE cpf = ?', [cpf], function(err, row) {
       if (err){
         c.end();
         callback(null);

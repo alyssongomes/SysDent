@@ -1,6 +1,8 @@
 var dc = new DiagnosticController();
 
 window.onload = function(){
+  document.getElementById("nome-usuario").innerText =
+    sessionStorage.getItem('usuarioName');
   initButtons();
 }
 
@@ -38,7 +40,7 @@ function initButtons(){
         new Date()
     );
 
-    dc.registerDiagnostic(diagnostic, function(result){
+    dc.save(diagnostic, function(result){
       if(result){
         alert("Diagnostico salvo!");
         document.getElementById("diagnostic").value = " ";
@@ -77,7 +79,6 @@ function updateTableDiagnostics(rows){
       dentist.appendChild(document.createTextNode(rows[i].dentist));
 
       var diagnostic = document.createElement("th");
-      console.log(rows[i].diagnostic.length);
       var diag = rows[i].diagnostic.length > 45? rows[i].diagnostic.substring(0,35)+"...":rows[i].diagnostic;
       diagnostic.appendChild(document.createTextNode(diag));
 
@@ -104,7 +105,7 @@ function updateTableDiagnostics(rows){
 
 function details(idDiagnostic){
   $("#diagnostic").val("");
-  dc.listDetailsDiagnostic(idDiagnostic, function(details){
+  dc.listDetails(idDiagnostic, function(details){
     $("#diagnostic").val(details[0].diagnostic);
   });
 }

@@ -1,6 +1,8 @@
 var suc = new SaveUserController();
 
 window.onload = function(){
+  document.getElementById("nome-usuario").innerText =
+    sessionStorage.getItem('usuarioName');
   initTableUsers();
   initButtons();
 }
