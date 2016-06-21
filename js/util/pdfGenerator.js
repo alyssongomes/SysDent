@@ -5,9 +5,9 @@ function PDFGenerator(filename,generationMethod)
   this.filename = filename;
   this.generationMethod = generationMethod;
 
-  this.generate = function(content)
+  this.generate = function(documentType,content)
   {
-    
+      
   }
 }
 
