@@ -9,9 +9,10 @@ function actionClickLogin()
     }
     checkLogin(cpf,password,function(result)
     {
-        if(result)
+        var usuario = result[0];
+        if(usuario)
         {
-          alert('Bem-vindo ao sistema, ' + result.name);
+          alert('Bem-vindo ao sistema, ' + usuario.name);
           location.href = "main.html";
         }
         else

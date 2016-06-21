@@ -1,9 +1,10 @@
 var aDAO = new AppointmentDAO();
+var uDAO = new UserDAO();
 
 function MainController() {
 
   this.findPatientCpf = function (cpf,callback){
-    return aDAO.findUserCpf(cpf,callback);
+    return uDAO.findUserCpf(cpf,callback);
   }
 
   this.listAllAppointments = function(callback) {

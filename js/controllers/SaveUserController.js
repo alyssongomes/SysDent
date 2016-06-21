@@ -8,7 +8,7 @@ function SaveUserController(){
   };
 
   this.listAllAttendant = function(callback){
-    return uDAO.listAllUsers(callback);
+    return uDAO.listAll(callback);
   }
 
   this.deleteAttendant = function (listCpfAttendant,callback){

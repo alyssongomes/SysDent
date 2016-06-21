@@ -9,7 +9,7 @@ function initTableUsers(){
 
     var table = document.getElementById("usuarios").getElementsByTagName('tbody').item(0);
 
-    var header = table.getElementsByTagName('tr').item(0).cloneNode(true);
+    var header = document.getElementsByTagName('thead').item(0).getElementsByTagName('tr').item(0).cloneNode(true);
 
     var linhas = document.getElementById("usuarios").rows;
 		var i = 0;

@@ -20,7 +20,8 @@ CREATE TABLE diagnostic (
 id int AUTO_INCREMENT,
 idPatient varchar(11),
 idDentist varchar(11),
-diagnostic varchar(500)
+diagnostic varchar(500),
+schedule date,
 PRIMARY KEY(id)
 );
 
@@ -43,6 +44,7 @@ idFunction int,
 password varchar(50),
 FOREIGN KEY(idFunction) REFERENCES function (id)
 );
+
 
 ALTER TABLE appointment ADD FOREIGN KEY(idPatient) REFERENCES user (cpf);
 ALTER TABLE appointment ADD FOREIGN KEY(idDentist) REFERENCES user (cpf);

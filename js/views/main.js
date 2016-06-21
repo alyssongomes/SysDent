@@ -2,6 +2,7 @@ var mc = new MainController();
 var data = null;
 
 window.onload = function(){
+  //$("#nome-usuario").text = usuario_logado.name;
   $("#calendar").datepicker({
     weekStart: 1,
     maxViewMode: 2,
@@ -119,10 +120,6 @@ function initComboBox() {
       $("#dentist").append("<option value="+dentists[i].cpf+">"+dentists[i].name+"</option>");
     }
   });
-}
-
-function saveAppointment(){
-
 }
 
 function clean(){

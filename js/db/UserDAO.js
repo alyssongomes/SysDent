@@ -2,72 +2,95 @@ function UserDAO(){
 
   var connection = new ConnectionDatabase();
 
-  this.listAllUsers = function (callback) {
+  this.listAll = function (callback) {
     var c = connection.connected();
     c.query('SELECT * FROM user',function(err, rows){// recebe o dado em json
       if (err){
-        c.end();
-        console.log("ERRO: " + err);
+        console.log("[ERROR] " + err.message);
         callback(null);
       }
-      callback(rows);
+      else
+        callback(rows);
+      c.end();
     });
   }
 
-  this.saveUser = function (user,callback){
+  this.save = function (user,callback){
     var c = connection.connected();
     c.query('INSERT INTO user SET ?',user, function(err, result){// recebe o dado em json
-      if (err != null){
-        c.end();
+      if (err){
+        console.log("[ERROR] " + err.message);
         callback(false);
       }
-      callback(true);
+      else
+        callback(true);
+      c.end();
     });
   }
 
-  this.deleteUser = function (cpf,callback){
+  this.delete = function (cpf,callback){
     var c = connection.connected();
     c.query('DELETE FROM user WHERE cpf = ?',[cpf], function (err, result) {
         if (err){
-          c.end();
+          console.log("[ERROR] " + err.message);
           callback(false);
         }
-        callback(true);
+        else
+          callback(true);
+        c.end();
       });
     }
 
-  this.updateUser = function (user,callback){
+  this.update = function (user,callback){
     var c = connection.connected();
     var u = [user.name,user.street,user.phone,user.district,user.password,user.zipcode,user.cpf];
     c.query('UPDATE user SET name = ?, street = ?, phone = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
       if (err){
-        c.end();
+        console.log("[ERROR] " + err.message);
         callback(false);
       }
       callback(true);
+      c.end();
     });
   };
 
-  this.findUser = function(name,callback){
+  this.find = function(name,callback){
     var c = connection.connected();
     c.query('SELECT * FROM user WHERE name like \'%'+name+'%\'', function(err, row) {
       if (err){
-        c.end();
+        console.log("[ERROR] " + err.message);
         callback(null);
       }
-      callback(row);
+      else
+        callback(row);
+      c.end();
     });
   }
 
-  this.findUserLogin = function(cpf, senha,callback){
+  this.findByLogin = function(cpf, senha,callback){
     var c = connection.connected();
     c.query('SELECT * from user WHERE cpf = \''+cpf+'\'AND password =\''+senha+'\'', function(err, row) {
       if (err){
-        console.log("ERRO: " + err);
+        console.log("[ERROR] " + err.message);
+        callback(null);
+      }
+      else
+        callback(row);
+      c.end();
+    });
+  };
+
+  this.findUserCpf = function(cpf,callback){
+    var con = new ConnectionDatabase();
+    var c = con.connected();
+    c.query('SELECT * FROM user WHERE cpf = \''+cpf+'\'', function(err, row) {
+      if (err){
         c.end();
         callback(null);
       }
       callback(row);
+      c.end();
     });
-  };
+  }
+
 }
