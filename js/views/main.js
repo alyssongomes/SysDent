@@ -1,5 +1,12 @@
 var mc = new MainController();
 
+function logout()
+{
+  sessionStorage.removeItem('usuarioName');
+  sessionStorage.removeItem('usuarioId');
+  sessionStorage.removeItem('usuarioFunction');
+}
+
 window.onload = function()
 {
   document.getElementById("nome-usuario").innerText =
