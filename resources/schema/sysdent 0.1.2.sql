@@ -20,13 +20,14 @@ CREATE TABLE diagnostic (
 id int AUTO_INCREMENT,
 idPatient varchar(11),
 idDentist varchar(11),
-diagnostic varchar(500)
+diagnostic varchar(500),
+dvalue double,
 PRIMARY KEY(id)
 );
 
 CREATE TABLE payment (
 id int AUTO_INCREMENT,
-pValue double,
+pvalue double,
 idPatient varchar(11),
 payday date
 PRIMARY KEY(id)

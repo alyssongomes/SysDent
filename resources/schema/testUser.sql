@@ -14,10 +14,10 @@ insert into user (cpf, name,street, phone, district, zipcode,idFunction, passwor
 insert into user (cpf, name,street, phone, district, zipcode,idFunction, password)   values("11999999911", "Ben Reilly", "Rua B","5588999777777","Quixada",63900001, 4,1234);
 
 
-insert into diagnostic (id, idPatient, idDentist, diagnostic) values ("11999999911", "12345678900", "tá com os dentes podres");
-insert into diagnostic (id, idPatient, idDentist, diagnostic) values ("11999999991", "12345678900","precisando fazer uma limpeza");
-insert into diagnostic (id, idPatient, idDentist, diagnostic) values ("99999999999", "12345678900", "tudo sussa");
-insert into diagnostic (id, idPatient, idDentist, diagnostic) values ("19999999991", "12345678900", "so sucesso");
+insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("11999999911", "12345678900", "tá com os dentes podres", 700.00);
+insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("11999999991", "12345678900","precisando fazer uma limpeza",500.00);
+insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("99999999999", "12345678900", "tudo sussa",300.00);
+insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("19999999991", "12345678900", "so sucesso", 200.00);
 
 
 
@@ -27,7 +27,7 @@ insert into appointment (id, idPatient, idDentist, schedule, appointment) values
 insert into appointment (id, idPatient, idDentist, schedule, appointment) values ("11999999911", "12345678900", '2016-06-05', '12:00:00');
 
 
-insert into payment (id, pValue, idPatient, payday) values (99.80, "11999999911", '2016-06-21');
-insert into payment (id, pValue, idPatient, payday) values (100.80, "11999999991", '2016-06-20');
-insert into payment (id, pValue, idPatient, payday) values (50.00, "99999999999", '2016-06-01');
-insert into payment (id, pValue, idPatient, payday) values (40.00, "19999999991", '2016-06-02');
+insert into payment (pvalue, idPatient, payday) values (99.80, "11999999911", '2016-06-21');
+insert into payment (pvalue, idPatient, payday) values (100.80, "11999999991", '2016-06-20');
+insert into payment (pvalue, idPatient, payday) values (50.00, "99999999999", '2016-06-01');
+insert into payment (pvalue, idPatient, payday) values (40.00, "19999999991", '2016-06-02');
