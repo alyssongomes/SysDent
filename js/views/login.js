@@ -1,3 +1,8 @@
+var electron = require('electron')
+
+//TODO: Fazer o login automático caso o usuário marque a opção
+// 'manter-me logado'
+
 function actionClickLogin()
 {
     var cpf          = document.getElementById('inputCpf').value;
@@ -12,7 +17,9 @@ function actionClickLogin()
         var usuario = result[0];
         if(usuario)
         {
-          alert('Bem-vindo ao sistema, ' + usuario.name);
+          sessionStorage.setItem('usuarioName',usuario.name);
+          sessionStorage.setItem('usuarioCpf',usuario.cpf);
+          sessionStorage.setItem('usuarioFunction',usuario.idFunction);
           location.href = "main.html";
         }
         else

@@ -18,6 +18,10 @@ insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("1
 insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("11999999991", "12345678900","precisando fazer uma limpeza",500.00);
 insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("99999999999", "12345678900", "tudo sussa",300.00);
 insert into diagnostic (id, idPatient, idDentist, diagnostic, dvalue) values ("19999999991", "12345678900", "so sucesso", 200.00);
+insert into diagnostic (id, idPatient, idDentist, diagnostic, schedule) values ("11999999911", "12345678900", "tá com os dentes podres", '2016-06-05');
+insert into diagnostic (id, idPatient, idDentist, diagnostic, schedule) values ("11999999991", "12345678900","precisando fazer uma limpeza", '2016-06-05');
+insert into diagnostic (id, idPatient, idDentist, diagnostic, schedule) values ("99999999999", "12345678900", "tudo sussa", '2016-06-15');
+insert into diagnostic (id, idPatient, idDentist, diagnostic, schedule) values ("19999999991", "12345678900", "so sucesso", '2016-06-15');
 
 
 

@@ -11,6 +11,7 @@
     <script src="../lib/datapicker/bootstrap-datepicker.min.js"></script>
     <script src="../lib/datapicker/bootstrap-datepicker.pt-BR.min.js"></script>
     <script src="../js/db/ConnectionDatabase.js"></script>
+    <script src="../js/db/UserDAO.js"></script>
     <script src="../js/db/AppointmentDAO.js"></script>
     <script src="../js/models/Appointment.js"></script>
     <script src="../js/controllers/mainController.js"></script>
@@ -27,8 +28,9 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="main.html">Home</a></li>
             <li><a href="savePatient.html">Novo Paciente</a></li>
-            <li><a href="#">Entrada de Produtos</a></li>
             <li><a href="saveUser.html">Cadastrar Usuário</a></li>
+            <li><a href="login.html" onclick="logout()" >Logout</a></li>
+            <li><a href="diagnostic.html">Consultas</a></li>
           </ul>
           </div>
           <p class="navbar-text navbar-right" >Olá <span id="nome-usuario"></span> </p>
@@ -78,19 +80,19 @@
                           <form>
                               <div class="col-xs-4" style="padding-bottom: 3px"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
                               <div class="col-xs-6" style="padding-bottom: 3px"><input class="form-control wrong" type="text" id="name" placeholder="Paciente" disabled/></div>
-                              <button type="button" class="btn btn-primary" id="btn-find">Localizar</button>
+                              <button type="button" class="btn btn-primary" id="btn-find" onclick="btnFindOnClick()">Localizar</button>
                               <div class="col-xs-4" style="padding-bottom: 3px">
                                 <select class="form-control" type="text" id="dentist"/></select>
                               </div>
-                              <div class="col-xs-4"><input class="form-control" type="date" id="schedule"/></div>
+                              <div class="col-xs-4"><input class="form-control" type="text" id="schedule" disabled/></div>
                               <div class="col-xs-4"><input class="form-control" type="time" id="appointment"/></div>
                           </form>
 
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="btn-mark">Confirmar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-cancel" onclick="btnCancelOnClick()">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="btn-mark" onclick="btnMarkOnClick">Confirmar</button>
                       </div>
                     </div>
                   </div>
