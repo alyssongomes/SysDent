@@ -5,7 +5,7 @@ function ConnectionDatabase(){
   this.connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '',
+    password : 'root',
     database : 'dbClinicaOdonto'
   });
 
