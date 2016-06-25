@@ -2,8 +2,10 @@ var PDFDocument = require('pdfkit')
 
 function PatientDocument()
 {
-  var regularFont = '../../fonts/LiberationSerif-Regular.ttf';
-  var boldFont  = '../../fonts/LiberationSerif-Bold.ttf';
+  //var regularFont = '../../fonts/LiberationSerif-Regular.ttf';
+  //var boldFont  = '../../fonts/LiberationSerif-Bold.ttf';
+  var regularFont = process.cwd()+'/SysDent/fonts/LiberationSerif-Regular.ttf';
+  var boldFont  = process.cwd()+'/SysDent/fonts/LiberationSerif-Bold.ttf';
 
   function imprimeCampos(doc,camposJson)
   {
@@ -29,7 +31,8 @@ function PatientDocument()
 
     doc.fontSize(20);
     doc.font(boldFont)
-    doc.image('../../imgs/documents/tooth-outline.png',{ width: 60});
+    //doc.image('../../imgs/documents/tooth-outline.png',{ width: 60});
+    doc.image(process.cwd()+'/SysDent/imgs/documents/tooth-outline.png',{ width: 60});
     doc.text('SIAO');
     doc.moveDown();
     doc.text('Sistema de Apoio ao Odotologista');

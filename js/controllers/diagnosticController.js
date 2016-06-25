@@ -1,5 +1,9 @@
+var PDFGenerator    = require('../js/util/pdfGenerator.js');
+var PatientDocument = require('../js/util/pdf/patientDocument.js');
+const {dialog} = require('electron').remote;
 var dDAO = new DiagnosticDAO();
 var uDAO = new UserDAO();
+var pDAO = new PaymentDAO();
 
 function DiagnosticController(){
 
@@ -18,4 +22,21 @@ function DiagnosticController(){
   this.listDetails = function(idDiagnostic, callback){
     return dDAO.listDetails(idDiagnostic,callback);
   }
+
+  this.updateValue = function(payment,callback) {
+    return pDAO.save(payment,callback);
+  }
+
+  this.report = function(content,callback) {
+    try {
+      var generator = new PDFGenerator(new PatientDocument());
+      var path = dialog.showSaveDialog();
+      generator.generate(path,content);
+      return callback(true);
+    } catch (e) {
+        console.log('[ERROR]: '+e.message);
+        return callback(false);
+    }
+  }
+
 }

@@ -29,9 +29,10 @@ PRIMARY KEY(id)
 CREATE TABLE payment (
 id int AUTO_INCREMENT,
 pvalue double,
-idPatient varchar(11),
+idDiagnostic int,
 payday date
-PRIMARY KEY(id)
+PRIMARY KEY(id),
+FOREIGN KEY(idDiagnostic) REFERENCES diagnostic (id)
 );
 
 CREATE TABLE user (

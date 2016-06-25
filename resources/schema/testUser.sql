@@ -31,7 +31,7 @@ insert into appointment (id, idPatient, idDentist, schedule, appointment) values
 insert into appointment (id, idPatient, idDentist, schedule, appointment) values ("11999999911", "12345678900", '2016-06-05', '12:00:00');
 
 
-insert into payment (pvalue, idPatient, payday) values (99.80, "11999999911", '2016-06-21');
-insert into payment (pvalue, idPatient, payday) values (100.80, "11999999991", '2016-06-20');
-insert into payment (pvalue, idPatient, payday) values (50.00, "99999999999", '2016-06-01');
-insert into payment (pvalue, idPatient, payday) values (40.00, "19999999991", '2016-06-02');
+insert into payment (pvalue, idDiagnostic, payday) values (99.80, 1, '2016-06-21');
+insert into payment (pvalue, idDiagnostic, payday) values (100.80, 1, '2016-06-20');
+insert into payment (pvalue, idDiagnostic, payday) values (50.00, 3, '2016-06-01');
+insert into payment (pvalue, idDiagnostic, payday) values (40.00, 1, '2016-06-02');

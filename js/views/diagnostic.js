@@ -1,7 +1,10 @@
 var dc = new DiagnosticController();
 
+
 window.onload = function(){
   document.getElementById("nome-usuario").innerText =
+    sessionStorage.getItem('usuarioName');
+  document.getElementById("doctor").value =
     sessionStorage.getItem('usuarioName');
   initButtons();
 }
@@ -29,35 +32,50 @@ function initButtons(){
   }
 
   document.getElementById("btn-cancel").onclick =  function (){
-      document.getElementById("diagnostic").value = " ";
+      clean();
   }
 
-  document.getElementById("btn-confirm").onclick =  function (){
-    var diagnostic = new Diagnostic(
-        document.getElementById("cpf").value,
-        document.getElementById("cpf-dentist").value,
-        document.getElementById("diagnostic").value,
-        new Date()
-    );
-
-    dc.save(diagnostic, function(result){
+  document.getElementById("btn-update").onclick =  function (){
+    var payment = new Payment(parseFloat(document.getElementById("valorp").value),document.getElementById("idDiagnostic").value,new Date());
+    dc.updateValue(payment,function(result){
       if(result){
-        alert("Diagnostico salvo!");
-        document.getElementById("diagnostic").value = " ";
-        dc.findHistoricCpf(document.getElementById("cpf").value,
-          function(result){
-            if (result.length > 0){
-              updateTableDiagnostics(result);
-            }else{
-              document.getElementById("name").value = "Paciente não encontrado!";
-            }
-        });
-      }else{
-        alert("Não foi possível salvar o diagnóstico!");
-      }
+        alert("Pagamento registrado com Sucesso!");
+        clean();
+      }else
+        alert("Pagamento não foi registrado!");
     });
   }
 
+  document.getElementById("btn-confirm").onclick =  function (){
+    if (document.getElementById("cpf").value === "") {
+      alert("Insira o cpf de uma Paciente!");
+    }else {
+      var diagnostic = new Diagnostic(
+          document.getElementById("cpf").value,
+          document.getElementById("cpf-dentist").value,
+          document.getElementById("diagnostic").value,
+          new Date(),
+          document.getElementById("valort").value
+      );
+
+      dc.save(diagnostic, function(result){
+        if(result){
+          alert("Diagnostico salvo!");
+          clean();
+          dc.findHistoricCpf(document.getElementById("cpf").value,
+            function(result){
+              if (result.length > 0){
+                updateTableDiagnostics(result);
+              }else{
+                document.getElementById("name").value = "Paciente não encontrado!";
+              }
+          });
+        }else{
+          alert("Não foi possível salvar o diagnóstico!");
+        }
+      });
+    }
+    }
 }
 
 function updateTableDiagnostics(rows){
@@ -88,8 +106,17 @@ function updateTableDiagnostics(rows){
       var action = document.createElement("th");
       var button = document.createElement("button");
       button.setAttribute("class","btn btn-primary glyphicon glyphicon-th");
+      button.setAttribute("title","Detalhes da consulta/diagnostico");
       button.setAttribute("onclick","details("+rows[i].id+")");
+
+      var button2 = document.createElement("button");
+      button2.setAttribute("style","margin-left:2px;");
+      button2.setAttribute("class","btn btn-success glyphicon glyphicon-th-list");
+      button2.setAttribute("title","Gerar relatório do diagnóstico");
+      button2.setAttribute("onclick","report("+rows[i].id+")");
+
       action.appendChild(button);
+      action.appendChild(button2);
 
       var row = document.createElement("tr");
       row.setAttribute("id",rows[i].id);
@@ -106,6 +133,34 @@ function updateTableDiagnostics(rows){
 function details(idDiagnostic){
   $("#diagnostic").val("");
   dc.listDetails(idDiagnostic, function(details){
+    $("#idDiagnostic").val(details[0].id);
     $("#diagnostic").val(details[0].diagnostic);
+    $("#valort").val(details[0].dvalue);
   });
+}
+
+function report(idDiagnostic){
+  var monName = new Array ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho","Julho", "Agosto","Setembro", "Outubro", "Novembro", "Dezembro");
+
+  dc.listDetails(idDiagnostic, function(details){
+    var content = {
+      Dentista: details[0].name,
+      Mês: monName[new Date(details[0].schedule).getMonth()],
+      CPF: details[0].idPatient,
+      Valor: details[0].dvalue,
+      texto:details[0].diagnostic
+    };
+    dc.report(content,function(result) {
+      if (result)
+        alert("Relatório Criado!");
+      else
+        alert("Relatório não pode ser Criado!");
+    });
+  });
+}
+
+function clean(){
+  document.getElementById("diagnostic").value = " ";
+  document.getElementById("valort").value = " ";
+  document.getElementById("valorp").value = " ";
 }

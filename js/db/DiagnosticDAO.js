@@ -18,7 +18,7 @@ function DiagnosticDAO(){
   this.findHistoricCpf = function(cpf,callback){
     var con = new ConnectionDatabase();
     var c = con.connected();
-    c.query('SELECT id, name, (select name from user where cpf = d.idDentist) as dentist, diagnostic, schedule FROM diagnostic as d, user WHERE cpf = idPatient AND idPatient = ?', cpf, function(err, rows) {
+    c.query('SELECT id, name, (select name from user where cpf = d.idDentist) as dentist, diagnostic, schedule FROM diagnostic as d, user WHERE cpf = idPatient AND idPatient = ?',[cpf], function(err, rows) {
       if (err){
         console.log("[ERROR] " + err.message);
         callback(null);
@@ -45,13 +45,15 @@ function DiagnosticDAO(){
   this.listDetails = function(idDiagnostic,callback){
     var con = new ConnectionDatabase();
     var c = con.connected();
-    c.query('SELECT * FROM diagnostic WHERE id = ?',idDiagnostic, function(err, rows) {
-      if (err)
+    c.query('SELECT id,idPatient,idDentist,name,diagnostic,schedule,dvalue FROM diagnostic d,user u WHERE d.idDentist = u.cpf AND id =  ?',idDiagnostic, function(err, rows) {
+      if (err){
+        console.log("[ERROR]:"+err.message);
         callback(null);
-      else
+      }else
         callback(rows);
-      });
-    }
+      c.end();
+    });
+  }
 
   this.delete = function (cpf,callback){
     var c = connection.connected();
@@ -65,19 +67,6 @@ function DiagnosticDAO(){
         c.end();
       });
     }
-
-  this.update = function (diagnostic,callback){
-    var c = connection.connected();
-    var u = [diagnostic.name,diagnostic.street,diagnostic.phone,diagnostic.district,diagnostic.password,diagnostic.zipcode,diagnostic.cpf];
-    c.query('UPDATE diagnostic SET name = ?, street = ?, phone = ?, district = ?, password = ?, zipcode = ? WHERE cpf = ?',u,function (err, result) {
-      if (err){
-        console.log("[ERROR] " + err.message);
-        callback(false);
-      }
-      callback(true);
-      c.end();
-    });
-  };
 
   this.find = function(name,callback){
     var c = connection.connected();

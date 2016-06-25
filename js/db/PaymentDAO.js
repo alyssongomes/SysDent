@@ -17,13 +17,15 @@ function PaymentDAO()
 
   this.save = function(mPayment,fCallback)
   {
-    var c = connection.connected();
+    var con = new ConnectionDatabase();
+    var c = con.connected();
     c.query('INSERT INTO payment SET ?',mPayment,
     function(err,result){
-      if(err)
-        callback(false);
-      else
-        callback(true);
+      if(err){
+        console.log('[ERRO]: ' + err);
+        fCallback(false);
+      }else
+        fCallback(true);
       c.end();
     });
   }
@@ -75,6 +77,7 @@ function PaymentDAO()
     });
   }
 
+  /*
   this.findByPatient(mPatient,fCallback)
   {
     //TODO Continuar isso aqui. Tenho de pegar o objeto patient antes de chamar
@@ -94,4 +97,5 @@ function PaymentDAO()
     });
 
   }
+  */
 }

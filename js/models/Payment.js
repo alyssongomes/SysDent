@@ -1,4 +1,4 @@
-function Payment(value,patient,payday)
+function Payment(pvalue,idDiagnostic,payday)
 {
-  return {value, patient, payday};
+  return {pvalue, idDiagnostic, payday};
 }
