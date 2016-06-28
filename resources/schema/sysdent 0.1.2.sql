@@ -9,8 +9,8 @@ PRIMARY KEY(id)
 
 CREATE TABLE appointment (
 id int AUTO_INCREMENT,
-idPatient varchar(11),
-idDentist varchar(11),
+idPatient char(14),
+idDentist char(14),
 schedule date,
 appointment time,
 PRIMARY KEY(id)
@@ -18,8 +18,8 @@ PRIMARY KEY(id)
 
 CREATE TABLE diagnostic (
 id int AUTO_INCREMENT,
-idPatient varchar(11),
-idDentist varchar(11),
+idPatient char(14),
+idDentist char(14),
 diagnostic varchar(500),
 dvalue double,
 schedule date,
@@ -36,7 +36,7 @@ FOREIGN KEY(idDiagnostic) REFERENCES diagnostic (id)
 );
 
 CREATE TABLE user (
-cpf char(11) PRIMARY KEY,
+cpf char(14) PRIMARY KEY,
 name varchar(50),
 street varchar(50),
 phone varchar(50),
