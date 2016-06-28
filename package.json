@@ -4,7 +4,7 @@
   "description": "Um aplicativo Desktop para ser usado em consultórios de dentistas.",
   "main": "main.js",
   "dependencies": {
-    "jQuery": "^1.7.4",
+    "jquery": "^1.7.4",
     "mysql": "^2.10.2",
     "pdfkit": "^0.7.2"
   },
