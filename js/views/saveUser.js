@@ -7,6 +7,32 @@ window.onload = function(){
   initButtons();
 }
 
+function substituirTeclas()
+{
+  var elementId = 'cpf';
+  var caixaDeTexto = document.getElementById(elementId);
+  var strTeclas     = caixaDeTexto.value;
+  var ultimoCaractere = caixaDeTexto.value.length - 1;
+  var precisaDePontos, precisaDeHifem;
+
+  function substuiChars(selectedChar)
+  {
+    document.getElementById(elementId).value = strTeclas.slice(0,ultimoCaractere) + selectedChar
+      + strTeclas.slice(ultimoCaractere,ultimoCaractere+1);
+  }
+
+  precisaDePontos = strTeclas.charAt(ultimoCaractere) != '.' &&
+   (strTeclas.length == 4 || strTeclas.length == 8);
+  precisaDeHifem = strTeclas.charAt(ultimoCaractere) != '-' &&
+    strTeclas.length == 12;
+  if(precisaDePontos)
+  {
+    substuiChars('.');
+  }
+  if(precisaDeHifem)
+    substuiChars('-');
+}
+
 function initTableUsers(){
 
     var table = document.getElementById("usuarios").getElementsByTagName('tbody').item(0);

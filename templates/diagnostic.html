@@ -53,7 +53,7 @@
           <div id="message"></div>
           <form>
             <div class="col-xs-3"><input class="form-control" type="text" id="doctor" disabled/><input type="hidden" id="cpf-dentist" value="12345678900"></div>
-            <div class="col-xs-3"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
+            <div class="col-xs-3"><input class="form-control" type="text" id="cpf" placeholder="CPF" maxlength="14" onkeypress="substituirTeclas()" /></div>
             <div class="col-xs-4"><input class="form-control" type="text" id="name" placeholder="Paciente" disabled/></div>
             <div class="col-xs-12" style="float: rigth;"><textarea class="form-control" type="text" id="diagnostic" style="height: 150px; resize:none; width: 100%;"></textarea></div>
             <input type="hidden" id="idDiagnostic">
