@@ -88,7 +88,7 @@
                       <div class="modal-body">
                         <div class="row">
                           <form>
-                              <div class="col-xs-4" style="padding-bottom: 3px"><input class="form-control" type="text" id="cpf" placeholder="CPF"/></div>
+                              <div class="col-xs-4" style="padding-bottom: 3px"><input class="form-control" type="text" id="cpf" placeholder="CPF" maxlength="14" onkeypress="substituirTeclas()"/></div>
                               <div class="col-xs-6" style="padding-bottom: 3px"><input class="form-control wrong" type="text" id="name" placeholder="Paciente" disabled/></div>
                               <button type="button" class="btn btn-primary" id="btn-find" onclick="btnFindOnClick()">Localizar</button>
                               <div class="col-xs-4" style="padding-bottom: 3px">
