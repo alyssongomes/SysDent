@@ -3,6 +3,30 @@ var electron = require('electron')
 //TODO: Fazer o login automático caso o usuário marque a opção
 // 'manter-me logado'
 
+function substituirTeclas()
+{
+  var caixaDeTexto = document.getElementById('inputCpf');
+  var strTeclas     = caixaDeTexto.value;
+  var ultimoCaractere = caixaDeTexto.value.length - 1;
+  var precisaDePontos, precisaDeHifem;
+  function substuiChars(selectedChar)
+  {
+    document.getElementById('inputCpf').value = strTeclas.slice(0,ultimoCaractere) + selectedChar
+      + strTeclas.slice(ultimoCaractere,ultimoCaractere+1);
+  }
+
+  precisaDePontos = strTeclas.charAt(ultimoCaractere) != '.' &&
+   (strTeclas.length == 4 || strTeclas.length == 8);
+  precisaDeHifem = strTeclas.charAt(ultimoCaractere) != '-' &&
+    strTeclas.length == 12;
+  if(precisaDePontos)
+  {
+    substuiChars('.');
+  }
+  if(precisaDeHifem)
+    substuiChars('-');
+}
+
 function actionClickLogin()
 {
     var cpf          = document.getElementById('inputCpf').value;

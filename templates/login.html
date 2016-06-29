@@ -17,9 +17,9 @@
       <form class="form-signin">
         <h2 class="form-signin-heading">Por favor, Logue-se</h2>
         <label for="cpf" class="sr-only">CPF</label>
-        <input type="text" id="inputCpf" class="form-control" placeholder="CPF" required autofocus>
+        <input type="text" id="inputCpf" class="form-control" onkeydown="substituirTeclas()" placeholder="CPF" maxlength="14" required autofocus>
         <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+        <input type="password" id="inputPassword" class="form-control"  placeholder="Senha" maxlength="32" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Lembrar de mim
